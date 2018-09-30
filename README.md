@@ -21,8 +21,8 @@ This project was generated with [angular-cli](https://github.com/angular/angular
 Clone the repo and do:
 
 ```bash
-$ git clone https://github.com/mtzfactory/job-helper.git
-$ cd job-helper
+$ git clone https://github.com/mtzfactory/job_helper.git
+$ cd job_helper
 $ npm install
 ```
 
