@@ -6,13 +6,13 @@
 
 # JOB HELPER
 
-This web app was the last one I made before joining the bootcamp, back in 2016. At that time I had already done two more app in __Angular__, so I decided to make a third one to build knowledge.
+This web app was the last one I made before joining the bootcamp, back in 2016. At that time I had already done two more apps in __Angular__, so I decided to make a third one to build knowledge.
 
-The goal for this web app was to help me find a new job, one that fulfil all my passions and motivations for the change. For that purpose I used __[Infojobs][infojobs-api]__'s api to seek for job offers.
+The goal for this web app was to help me find a new job, one that fulfilled all my passions and motivations for the change. For that purpose I used __[Infojobs][infojobs-api]__'s api to seek for job offers.
 
 The backend was clear: __Firebase__, with its realtime database was all what I need to store user's configuration and perform user authentication.
 
-You can try it, just [sing up][sign-up] and play with it, it's published in Firebase cloud and it's accesible in this [link][job-helper].
+You can try it, just [sign up][sign-up] and play with it, it's published in Firebase cloud and it's accesible in this [link][job-helper].
 
 ## Development server
 
