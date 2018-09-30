@@ -1,4 +1,5 @@
 ![angular](https://mtzfactory.github.io/logos/png-2/angular.png)
+![firebase](https://mtzfactory.github.io/logos/png-2/firebase.png)
 ![javascript](https://mtzfactory.github.io/logos/png-2/javascript.png)
 ![html](https://mtzfactory.github.io/logos/png-2/html-5.png)
 ![css](https://mtzfactory.github.io/logos/png-2/css-3.png)
