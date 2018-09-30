@@ -1,0 +1,132 @@
+<div class="row">
+<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="myCarousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item slides active">
+      <div class="hero">
+        <section>
+          <h1>We are creative</h1>        
+          <h3>Get start your next awesome project</h3>
+        </section>
+        <button type="button" class="btn btn-hero btn-lg" routerLink="./" fragment="contact">Contact us</button>
+      </div>
+      <div class="overlay"></div>
+      <div class="slide-1"></div>
+    </div>
+    <div class="item slides">
+      <div class="hero">        
+        <section>
+          <h1>We are smart</h1>        
+          <h3>Get start your next awesome project</h3>
+        </section>       
+        <button type="button" class="btn btn-hero btn-lg" routerLink="./" fragment="contact">Contct us</button>
+      </div>
+      <div class="overlay"></div>
+      <div class="slide-2"></div>
+    </div>
+    <div class="item slides">
+      <div class="hero">        
+        <section>
+          <h1>We are amazing</h1>        
+          <h3>Get start your next awesome project</h3>
+        </section>
+        <button type="button" class="btn btn-hero btn-lg" routerLink="./" fragment="contact">Contact us</button>
+      </div>
+      <div class="overlay"></div>
+      <div class="slide-3"></div>
+    </div>
+  </div>
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!-- Container (The Prjs Section) -->
+<div id="prjs" class="container container-section text-center">
+  <br>
+  <h3>WTF ¿??</h3>
+  <p>We love to code, the bits!</p>
+  <p>Not enough good stories to tell yet, but we are working on it.</p>
+  <br>
+  <div class="row">
+    <div class="col-xs-12 col-md-4">
+      <p class="text-center"><strong>Angular</strong></p>
+      <a href="#item1" data-toggle="collapse">
+        <img src="assets/img/angular-logo.svg" class="img-circle person" alt="angular" width="255" height="255">
+      </a>
+      <div id="item1" class="collapse">
+        <p>Web apps development in angular.</p>
+        <p>Coding made easy!!</p>
+        <p>Playing since 2016...</p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <p class="text-center"><strong>Arduino</strong></p>
+      <a href="#item2" data-toggle="collapse">
+        <img src="assets/img/arduino-logo.png" class="img-circle person" alt="arduino" width="255" height="255">
+      </a>
+      <div id="item2" class="collapse">
+        <p>What to tell!</p>
+        <p>Love this tiny blue card.</p>
+        <p>Messing arround since 2006...</p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <p class="text-center"><strong>Others</strong></p>
+      <a href="#item3" data-toggle="collapse">
+        <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=¿??&w=350&h=350" class="img-circle person" alt="others" width="255" height="255">
+      </a>
+      <div id="item3" class="collapse">
+        <p>Something to come...</p>
+        <p>Any idea?</p>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container (The CV Section) -->
+<div id="cv" class="container container-section text-center">
+  <h3 class="text-center">cv</h3>
+</div>
+<!-- Container (Contact Section) -->
+<div id="contact" class="container container-section text-center">
+  <h3 class="text-center">Contact</h3>
+  <p class="text-center"><em>Drop a note!</em></p>
+  <div class="row">
+    <div class="col-md-4">
+      <p>or write me here...</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span>&nbsp;Barcelona, ES</p>
+      <p><span class="glyphicon glyphicon-phone"></span>&nbsp;Phone: +34 656162732</p>
+      <p><span class="glyphicon glyphicon-envelope"></span>&nbsp;Email: we.are.amazing@gmail.com</p>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5" required></textarea>
+      <br>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <button class="btn btn-hero btn-lg pull-right" type="submit">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

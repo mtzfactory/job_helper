@@ -1,0 +1,119 @@
+<div *ngIf="!auth$.authenticated" id="top" class="container container-section">
+  <!-- BEGIN # MODAL LOGIN -->
+  <div *ngIf="showLogin || showLostPassword || showRegister" id="dialog" class="row" align="center">
+    <div class="login">
+      <div class="dialog-content">
+        <div class="dialog-header" align="center">
+          <img class="img-circle" id="img_logo" [attr.src]="photoSrc || 'assets/img/logo.png'">
+        </div>
+        <div id="div-forms"> <!-- Begin # DIV Form -->
+          <form [formGroup]="loginForm" (ngSubmit)="logIn()" *ngIf="showLogin"> <!-- Begin # Login Form -->
+            <div class="dialog-body">
+              <div id="div-login-msg">
+                <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                <span id="text-login-msg" data-toggle="tooltip" title="{{loginMessage}}">{{loginMessage}}</span>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon2"><i class="fa fa-envelope-open-o fa-fw" aria-hidden="true"></i></span>
+                <input formControlName="email" class="form-control" aria-describedby="basic-addon2" type="text" placeholder="Email" name="email" tabindex="2">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3"><i class="fa fa-keyboard-o fa-fw" aria-hidden="true"></i></span>      
+                <input formControlName="password" class="form-control" aria-describedby="basic-addon3" type="password" placeholder="Password" name="password" tabindex="3">
+              </div>
+              <div class="checkbox">
+                <label><input formControlname="rememberme" type="checkbox"> Remember me</label>
+              </div>
+            </div>
+            <div class="dialog-footer">
+              <div>
+                <button type="submit" class="btn btn-hero btn-lg btn-block" [disabled]="!loginForm.valid">Login</button>
+              </div>
+              <div>
+                <button type="button" class="btn btn-link" (click)="showLostPassword = true; showLogin = false;">Lost Password?</button>
+                <button type="button" class="btn btn-link" (click)="showRegister = true; showLogin = false;">Register</button>
+              </div>
+            </div>
+          </form> <!-- End # Login Form -->
+          <form [formGroup]="lostForm" (ngSubmit)="lostPassword()" *ngIf="showLostPassword"> <!-- Begin | Lost Password Form -->
+            <div class="dialog-body">
+              <div id="div-lost-msg">
+                <div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>
+                <span id="text-lost-msg">{{lostMessage}}</span>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon2"><i class="fa fa-envelope-open-o fa-fw" aria-hidden="true"></i></span>
+                <input formControlName="email" class="form-control" aria-describedby="basic-addon2" type="email" placeholder="Email" name="email" tabindex="2">
+              </div>
+            </div>
+            <div class="dialog-footer">
+              <div>
+                <button type="submit" class="btn btn-hero btn-lg btn-block" [disabled]="!lostForm.valid">Send</button>
+              </div>
+              <div>
+                <button type="button" class="btn btn-link" (click)="showLogin = true; showLostPassword = false;">Log In</button>
+                <button type="button" class="btn btn-link" (click)="showRegister = true; showLostPassword = false;">Register</button>
+              </div>
+            </div>
+          </form> <!-- End | Lost Password Form -->
+          <form [formGroup]="registerForm" (ngSubmit)="signIn()" *ngIf="showRegister" autocomplete="off"> <!-- Begin | Register Form -->
+            <div class="dialog-body">
+              <div id="div-register-msg">
+                <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                <span id="text-register-msg">{{registerMessage}}</span>
+              </div>
+              <div class="input-group">
+                <label class="input-group-btn">
+                  <span class="btn btn-hero"><i class="fa fa-camera-retro fa-fw" aria-hidden="true"></i>
+                    <input type="file" class="form-control" style="display: none;" accept="image/*" (change)="handleInputChange($event)">
+                  </span>
+                </label>
+                <input formControlName="photo" type="text" class="form-control" [(ngModel)]="photoPath" placeholder="Your picture" readonly>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user-o fa-fw" aria-hidden="true"></i></span>
+                <input formControlName="username" class="form-control" aria-describedby="basic-addon1" type="text" placeholder="User name" name="username" tabindex="1">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon2"><i class="fa fa-envelope-open-o fa-fw" aria-hidden="true"></i></span>
+                <input formControlName="email" class="form-control" aria-describedby="basic-addon2" type="email" placeholder="Email" name="email" tabindex="2">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3"><i class="fa fa-keyboard-o fa-fw" aria-hidden="true"></i></span>      
+                <input formControlName="password" class="form-control" aria-describedby="basic-addon3" type="password" placeholder="Password" name="password" tabindex="3">
+              </div>
+            </div>
+            <div class="dialog-footer">
+              <div>
+                <button type="submit" class="btn btn-hero btn-lg btn-block" [disabled]="!registerForm.valid">Register</button>
+              </div>
+              <div>
+                <button type="button" class="btn btn-link" (click)="showLogin = true; showRegister = false;">Log In</button>
+                <button type="button" class="btn btn-link" (click)="showLostPassword = true; showRegister = false;">Lost Password?</button>
+              </div>
+            </div>
+          </form> <!-- End | Register Form -->
+        </div> <!-- End # DIV Form -->       
+      </div>
+    </div>
+  </div> <!-- END # MODAL LOGIN -->
+</div>
+
+<div *ngIf="verification || (auth$.authenticated && !auth$.userVerified)" class="container container-section text-center">
+  <div class="hero row">
+    <section>
+      <h1>YOU ARE ALMOST DONE</h1>        
+      <h3>We send you a verification email, please, check it...</h3>
+      <button class="btn btn-hero btn-lg" type="button" (click)="verifyEmail();">Resend</button>
+      <h4 *ngIf="sentVerificationEmail" style="color: #1abc9c">another one sent!</h4>
+    </section>
+  </div>
+  <br>
+  <div *ngIf="auth$.authenticated && !verification" class="hero row">
+    <hr>
+    <section>
+      <h3><b>{{auth$.currentUser.displayName}}</b>, aren't you ?</h3>
+      <button class="btn btn-hero btn-lg" type="button" (click)="logOut()">get me out of here!</button>
+    </section>
+  </div>
+</div>

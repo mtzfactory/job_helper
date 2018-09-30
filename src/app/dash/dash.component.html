@@ -1,0 +1,155 @@
+<!--<div class="container-fluid">-->
+	<div class="sidenav-slide" [class.sidenav-open]="showLeftPanel">
+		<nav class="sidenav-left sidenav-slide">
+			<ul class="list-inline">
+				<li class="text-center"><h2><strong>FILTERS</strong></h2></li>
+				<li class="pull-right"><h2 class="rightside" (click)="showLeftPanel=false; bodyScroll(false)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></h2></li>
+				<li class="pull-right"><h2 class="leftside" (click)="addFilter()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></h2></li>
+			</ul>
+			<div class="clearfix"></div>
+			<ul>
+				<li *ngFor="let filter of fbFilters; let j = index"> 
+					<mtz-filters [filter]="filter" [index]="j+1"></mtz-filters>
+				</li>
+			</ul>
+		</nav>
+	</div> <!-- end left side menu -->
+	<div class="overlay" *ngIf="showLeftPanel"><div class="overlay-content" (click)="showLeftPanel=false; bodyScroll(false)"></div></div>
+	<div class="sidenav-slide" [class.sidenav-open]="showRightPanel">
+		<nav class="sidenav-right sidenav-slide" id="top-right-sidenav">
+			<ul class="list-inline">
+				<li class="text-center"><h2><strong>JOB DESCRIPTION</strong></h2></li>
+				<li class="pull-right"><h2 class="rightside" (click)="showRightPanel=false; bodyScroll(false);"><i class="fa fa-remove" aria-hidden="true"></i></h2></li>
+				<li class="pull-right"><h2 class="middle" (click)="markAsRejected(jobOffer.id)"><i class="fa fa-eye-slash" aria-hidden="true"></i></h2></li>
+				<li class="pull-right"><h2 class="leftside" (click)="openOffer(jobOffer)"><i class="fa fa-eye" aria-hidden="true"></i></h2></li>
+			</ul>
+			<div class="clearfix"></div>
+			<div *ngIf="jobOffer" style="font-size: 12px; color: #fff; padding-left: 15px; padding-right: 15px;">
+				<ul class="list-inline">
+					<li class="header">
+						<h4 class="wrap-text vcenter">{{jobOffer.title | capitalize}}<br>
+							<a href="{{jobOffer.profile.web}}" target="_blank"><img class="img-responsive vcenter" src="{{jobOffer.profile.web | favicon}}"></a>
+							<small><a href="{{jobOffer.profile.web}}" target="_blank">{{jobOffer.profile.name}}</a></small>
+						</h4>
+				  </li>
+				</ul>
+				<hr>
+				<div class="row">
+					<div class="col-xs-6 col-md-4 col-lg-4">
+						<p class="wrap-text"><i class="fa fa-briefcase fa-fw" aria-hidden="true"></i> {{jobOffer.subcategories[0].value}}</p>
+					</div>
+					<div class="col-xs-6 col-md-4 col-lg-4">
+						<p class="wrap-text"><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> {{jobOffer.city + ", " + jobOffer.province.value}}</p>
+					</div>
+					<div class="col-xs-6 col-md-4 col-lg-4">
+						<p class="wrap-text"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> {{jobOffer.creationDate | truncate:19 | date:'MMM d, y, HH:mm'}}</p>
+					</div>
+				<!--</div>
+				<div class="row">-->
+					<div class="col-xs-6 col-md-4 col-lg-4">
+						<p class="wrap-text"><i class="fa fa-user fa-fw" aria-hidden="true"></i> {{jobOffer.vacancies}} vacantes / {{jobOffer.applications}} inscritos</p>
+					</div>
+					<div class="col-xs-6 col-md-4 col-lg-4">
+						<p class="wrap-text"><i class="fa fa-euro fa-fw" aria-hidden="true"></i>
+						{{(jobOffer.minPay ? jobOffer.minPay.amount : "no definido") + " - " + (jobOffer.maxPay ? jobOffer.maxPay.amount : "no definido")}}</p>
+					</div>
+					<div class="col-xs-6 col-md-4 col-lg-4">
+						<p class="wrap-text"><i class="fa fa-list-alt fa-fw" aria-hidden="true"></i>
+						{{jobOffer.contractType.value=="(Seleccionar)" ? "no definido" : jobOffer.contractType.value}}</p>
+					</div>
+				</div>
+				<div class="bs-callout bs-callout-info">
+          <h4>Descripción<small class="pull-right" *ngIf="jobOffer.contractDuration">Duración: {{jobOffer.contractDuration}}</small></h4>
+          <p *ngFor="let paragraph of jobOffer.description | nl2paragraph">{{paragraph}}</p>
+        </div>
+        <div class="bs-callout bs-callout-info">
+          <h4>Requisitos<small class="pull-right">{{jobOffer.category.value}}</small></h4>
+          <div *ngIf="jobOffer.studiesMin"> 
+            <h5>Estudios mínimos</h5>
+            <p>{{jobOffer.studiesMin.value}}</p>
+          </div>
+          <div *ngIf="jobOffer.minRequirements">
+            <h5>Experiencia mínima</h5>
+            <p>{{jobOffer.experienceMin.value}}</p>
+          </div>
+          <div *ngIf="jobOffer.minRequirements">
+            <h5>Requisitos mínimos</h5>
+            <p *ngFor="let paragraph of jobOffer.minRequirements | nl2paragraph">{{paragraph}}</p>
+          </div>
+          <div *ngIf="jobOffer.desiredRequirements">
+            <h5>Requisitos deseados</h5>
+            <p *ngFor="let paragraph of jobOffer.desiredRequirements | nl2paragraph">{{paragraph}}</p>
+          </div>
+          <div *ngIf="jobOffer.jobLevel">
+            <h5>Nivel</h5>
+            <p>{{jobOffer.jobLevel.value}}</p>
+          </div>
+        </div>
+			</div>
+		</nav>
+	</div> <!-- end right side menu -->
+	<div class="overlay" *ngIf="showRightPanel"><div class="overlay-content" (click)="showRightPanel=false; bodyScroll(false);"></div></div>
+	<div id="top" class="row" style="padding-top: 48px;">
+		<ol class="breadcrumb">
+			<li><a href="javascript:void(null);" (click)="showLeftPanel=true; bodyScroll(true);"><i class="fa fa-tags" aria-hidden="true"></i></a></li>
+			<template ngFor let-filter [ngForOf]="fbFilters">
+				<li *ngIf="filter.enabled">
+					<a href="javascript:void(null);" (click)="setActiveFilter(filter.$key)">{{filter.keywords}}</a>
+					<span *ngIf="filter.$key==datasharing.activeFilterKey && jobOffers.totalResults>=0">
+						&nbsp;<span class="badge">{{jobOffers.totalResults}}</span>
+					</span>
+				</li>
+			</template>
+		</ol>
+	</div> <!-- end breadcrumb -->
+	<div *ngIf="fbFilters == 0">
+		<span>There are no filters, please create one clicking on the blue <i class="fa fa-tags fa-fw" style="font-size: 12px;" aria-hidden="true"></i>icon.</span>
+	</div>
+	<div *ngIf="jobOffers.totalResults == 0">
+    <span>There are no matching results with the selected filter.</span>
+  </div>
+	<div *ngIf="!jobOffers.offers || jobOffers.totalResults == 0">
+		<span>You can edit the filters clicking on the blue <i class="fa fa-tags fa-fw" style="font-size: 12px;" aria-hidden="true"></i>icon.</span>
+	</div>
+	<div *ngIf="jobOffers.offers">
+		<div class="row no-gutter">
+			<div class="col-lg-4 col-sm-6" *ngFor="let offer of jobOffers.offers; let j = index">
+				<div class="list-group">
+					<a class="list-group-item" (click)="retrieveOffer(offer.id)" [ngClass]="datasharing.fbReaded | status:offer.id" href="javascript:void(null);">
+						<h5 class="list-group-item-heading">{{offer.title | capitalize}}<br><small>{{offer.author.name | capitalize}}</small></h5>
+						<div class="list-group-item-text">
+							<div class="flex-container">
+								<div class="flex-item">
+									<i class="fa fa-diamond fa-fw" aria-hidden="true"></i>{{offer.subcategory.value}}
+								</div>
+								<div class="flex-item">
+									<i class="fa fa-bookmark-o fa-fw" aria-hidden="true"></i>{{offer.category.value}}
+								</div>
+							</div>
+						</div><!--&emsp;-->
+						<p class="list-group-item-text">
+							<span class="pull-right">
+								<i class="fa fa-user-o fa-fw" aria-hidden="true"></i>{{offer.applications}}&nbsp;&nbsp;-&nbsp;&nbsp; 
+								<i class="fa fa-calendar fa-fw" aria-hidden="true"></i>{{offer.published | date:'MMM d, y, HH:mm'}}
+							</span>
+						</p> 
+					</a>
+				</div>
+			</div>
+		</div> <!-- end offer -->
+		<div *ngIf="jobOffers.totalPages > 1">
+			<nav class="pager-div" aria-label="...">
+				<ul class="pager">
+					<li class="previous" [class.disabled]="jobOffers.currentPage == 1">
+						<a href="javascript:void(null);" (click)="previousPage();">
+							<i class="fa fa-chevron-left fa-fw" aria-hidden="true"></i>previous
+							</a>
+					</li>
+					<li class="next" [class.disabled]="jobOffers.currentPage >= jobOffers.totalPages">
+						<a href="javascript:void(null);" (click)="nextPage();">next<i class="fa fa-chevron-right fa-fw" aria-hidden="true"></i></a>
+					</li>
+				</ul>
+			</nav>
+		</div> <!-- end pager -->
+	</div><!-- end jobOffers -->
+<!--</div>-->

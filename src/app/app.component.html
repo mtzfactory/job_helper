@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="javascript:void(null);" (click)="routeMe('./', 'app')">rm2</a>
+    </div>
+    <div class="navbar-collapse collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a data-toggle="collapse" data-target=".navbar-collapse.in" href="javascript:void(null);" (click)="routeMe('./', 'app')">HOME</a></li>
+        <li><a data-toggle="collapse" data-target=".navbar-collapse.in" href="javascript:void(null);" (click)="routeMe('./', 'prjs')">PRJS</a></li>
+        <li><a data-toggle="collapse" data-target=".navbar-collapse.in" href="javascript:void(null);" (click)="routeMe('./', 'cv')">CV</a></li>
+        <li><a data-toggle="collapse" data-target=".navbar-collapse.in" href="javascript:void(null);" (click)="routeMe('./', 'contact')">CONTACT</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a data-toggle="collapse" data-target=".navbar-collapse.in" href="javascript:void(null);" (click)="routeMe('dash')">dashboard</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse.in" href="javascript:void(null);">ó</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse.in" href="javascript:void(null);">nada</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse.in" href="javascript:void(null);">más</a></li>
+          </ul>
+        </li>
+        <li><a data-toggle="collapse" data-target=".navbar-collapse.in" href="javascript:void(null);" (click)="routeMe('login', 'top')"><i class="fa fa-lg fa-user-circle"></i></a></li>
+        <li *ngIf="auth$.userVerified"><a data-toggle="collapse" data-target=".navbar-collapse.in" href="javascript:void(null);" (click)="logOut()">Log Out</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Router -->
+  <router-outlet></router-outlet>
+  <!-- Footer -->
+  <footer class="text-center">
+    <a class="up-arrow" href="javascript:void(null);" (click)="routeMe('./', 'app')" data-toggle="tooltip" title="TO TOP"><span class="glyphicon glyphicon-chevron-up"></span></a>
+    <h6>coded with&nbsp;&nbsp;<i class="fa fa-heart red" aria-hidden="true"></i>&nbsp;&nbsp;by <a href="#">Ricardo Martínez</a></h6>
+  </footer>
+</div>

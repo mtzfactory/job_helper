@@ -1,0 +1,18 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+    font: 400 15px/1.8 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #777;
+    /* Margin bottom by footer height - set height in app.component.css as well */
+    margin-bottom: 50px;
+}
+.no-scroll { overflow: hidden; }
+.container-section { padding: 80px 120px; }
+.centerme {
+    position:absolute;
+    top: 45%;
+    left: 45%;
+}

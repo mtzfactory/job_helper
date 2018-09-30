@@ -1,0 +1,56 @@
+<div id="top" class="container container-section text-center">
+  <div id="dialog" class="row" align="center">
+    <div class="profile"> <!-- Begin # DIV Form -->
+      <div class="header">
+        <img id="user-pic" class="img-circle" [attr.src]="photoSrc || 'assets/img/logo.png'">
+      </div>
+      <div>
+					<span>Please, feel free to update your info...</span>
+			</div>
+      <div id="userProfile">
+        <form [formGroup]="profileForm" (ngSubmit)="updateProfile()" novalidate autocomplete="off"> <!-- Begin # Login Form -->
+          <div class="input-group">
+            <label class="input-group-btn">
+              <span class="btn btn-hero"><i class="fa fa-camera-retro fa-fw" aria-hidden="true"></i>
+                <input type="file" class="form-control" style="display: none;" accept="image/*" (change)="handleInputChange($event)">
+              </span>
+            </label>
+            <input formControlName="photo" type="text" class="form-control" [(ngModel)]="photoPath" placeholder="Your picture" readonly>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user-o fa-fw" aria-hidden="true"></i></span>
+            <input formControlName="username" (change)="profileProfileChanged=true" class="form-control" aria-describedby="basic-addon1" type="text" placeholder="User name" name="username" autocomplete="off" tabindex="1">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon2"><i class="fa fa-envelope-open-o fa-fw" aria-hidden="true"></i></span>
+            <input formControlName="email" (change)="profileEmailChanged=true" class="form-control" aria-describedby="basic-addon2" type="email" placeholder="Email" name="email" autocomplete="off" tabindex="2">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon3"><i class="fa fa-keyboard-o fa-fw" aria-hidden="true"></i></span>      
+            <input formControlName="password" (change)="profilePasswordChanged=true" class="form-control" aria-describedby="basic-addon3" type="password" placeholder="New password" name="password" autocomplete="off" tabindex="3">
+          </div>
+          <ul class="list-inline pull-right">
+            <li *ngIf="!auth$.userVerified">
+              <div style="width: 90px;">
+                <button type="button" class="btn btn-hero btn-lg btn-block" (click)="verifyMe()">Verify me</button>
+              </div>
+            </li>
+            <li *ngIf="auth$.userVerified">
+              <div style="width: 110px;">
+                <button type="submit" class="btn btn-hero btn-lg btn-block" [disabled]="!profileProfileChanged && !profileEmailChanged && !profilePasswordChanged">Update</button>
+              </div>
+            </li>
+            <li *ngIf="auth$.userVerified">
+              <div style="width: 110px;">
+                <button type="button" class="btn btn-hero btn-lg btn-block" (click)="deleteAccount()">Delete</button>
+              </div>
+            </li>
+          </ul>
+        </form>
+      </div>
+      <div id="message" *ngIf="message" style="padding-top: 10px;">
+        <span [style.color]="isErrorMessage">{{message}}</span>
+      </div>
+    </div>
+  </div>
+</div>

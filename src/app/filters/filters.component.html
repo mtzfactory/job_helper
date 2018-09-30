@@ -1,0 +1,38 @@
+<!--<div class="container-fluid">-->
+  <div>
+    <form #formFilters action="">
+      <label class="switch"><input type="checkbox" [(ngModel)]="filter.enabled" (ngModelChange)="filterChanged(filter.$key)" name="fenabled"><div class="slider round"></div></label>
+      <span>&nbsp;&nbsp;filter #{{index}}</span>
+      <a class="pull-right" href="javascript:void(null);" (click)="filterRemove(filter.$key)"><small>remove</small></a>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-tags fa-fw" aria-hidden="true"></i></span>
+        <input type="text" class="form-control" aria-describedby="basic-addon1" placeholder="keywords" maxlength="100" [disabled]="!filter.enabled" [(ngModel)]="filter.keywords" (change)="filterChanged(filter.$key)" name="keywords" tabindex="(index*4)+1">
+      </div>
+      <div class="row">
+        <div class="col-xs-6 leftside">
+          <div class="input-group">
+          <span class="input-group-addon" id="basic-addon2"><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i></span>
+          <input type="text" class="form-control" aria-describedby="basic-addon2" placeholder="city" maxlength="25" [disabled]="!filter.enabled" [(ngModel)]="filter.city" (change)="filterChanged(filter.$key)" name="city" tabindex="(index*4)+2">
+          </div>
+        </div>
+        <div class="col-xs-6 rightside">
+          <div class="input-group">
+          <span class="input-group-addon" id="basic-addon3"><i class="fa fa-map fa-fw" aria-hidden="true"></i></span>
+          <input type="text" class="form-control" aria-describedby="basic-addon3" placeholder="province" maxlength="25" [disabled]="!filter.enabled" [(ngModel)]="filter.province" (change)="filterChanged(filter.$key)" name="province" tabindex="(index*4)+3">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3" style="font-size: 12px; padding-top:5px; padding-right: 0px;">
+          <span><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>since:</span>
+        </div>
+        <div class="col-xs-9">
+          <label class="radio-inline"><input type="radio" [value]="1" [class.disabled]="!filter.enabled" [(ngModel)]="filter.days" (ngModelChange)="filterChanged(filter.$key)" id="r1" name="days" tabindex="(index*4)+4">1d</label>
+          <label class="radio-inline"><input type="radio" [value]="2" [class.disabled]="!filter.enabled" [(ngModel)]="filter.days" (ngModelChange)="filterChanged(filter.$key)" id="r2" name="days">2d</label>
+          <label class="radio-inline"><input type="radio" [value]="3" [class.disabled]="!filter.enabled" [(ngModel)]="filter.days" (ngModelChange)="filterChanged(filter.$key)" id="r3" name="days">3d</label>
+          <label class="radio-inline"><input type="radio" [value]="4" [class.disabled]="!filter.enabled" [(ngModel)]="filter.days" (ngModelChange)="filterChanged(filter.$key)" id="r4" name="days">4d</label>
+        </div>
+      </div>
+    </form>
+  </div>
+<!--</div>-->

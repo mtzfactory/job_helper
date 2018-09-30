@@ -1,0 +1,20 @@
+ng new job-helper
+npm install --save @angular/material
+npm install --save firebase angularfire2
+npm install --save hammerjs @types/hammerjs
+
+Añadir a tsconfig.json:
+	"types": [
+		"jasmine", 
+		"hammerjs"
+	]
+
+Añadir en la última linea de src/polyfills.ts:
+	import 'hammerjs';
+
+Añadir en src/typings.d.ts
+	declare var require: any;
+
+ng build —prod
+firebase init
+firebase deploy

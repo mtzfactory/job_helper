@@ -1,0 +1,26 @@
+<div id="top" class="container container-section text-center">
+	<div id="dialog" class="row" align="center">
+		<div class="auth">
+			<div class="header">
+				<img id="user-pic" class="img-circle" [attr.src]="photoSrc || 'assets/img/logo.png'">
+			</div>
+			<div *ngIf="showResetPassword" id="resetPassword">
+				<div>
+					<span>We are almost done, please, set the new password...</span>
+				</div>
+				<form [formGroup]="passwordForm" (ngSubmit)="setNewPassword()" novalidate autocomplete="off"> <!-- Begin # Reset Form -->
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1"><i class="fa fa-keyboard-o fa-fw" aria-hidden="true"></i></span>      
+						<input formControlName="password" class="form-control" aria-describedby="basic-addon1" type="password" placeholder="New password" name="password" autocomplete="off" tabindex="1">
+					</div>
+					<div class="pull-right" style="width: 90px; padding: 5px;">
+						<button type="submit" class="btn btn-hero btn-lg btn-block" [disabled]="!passwordForm.valid">Send</button>
+					</div>
+				</form>
+			</div>
+      <div *ngIf="message" style="padding-top: 10px;">
+        <span [style.color]="isErrorMessage">{{message}}</span>
+      </div>
+		</div>
+  </div>
+</div>
