@@ -6,13 +6,13 @@
 
 # JOB HELPER
 
-This web app was the last one I made before joining the bootcamp, back in 2016. At that time I had already done two more apps in __Angular__, so I decided to make a third one to build knowledge.
+The goal for this web app was to help me find a new job,  one that fulfilled all my passions and motivations for change, and practice at the same time with __Angular__ . 
 
-The goal for this web app was to help me find a new job, one that fulfilled all my passions and motivations for the change. For that purpose I used __[Infojobs][infojobs-api]__'s api to seek for job offers.
+__[Infojobs][infojobs-api]__'s free api is used to look for job offers.
 
-The backend was clear: __Firebase__, with its realtime database was all what I need to store user's configuration and perform user authentication.
+The backend was clear: [__Firebase__][firebase], with its realtime database, it was all I needed to store user's configuration and perform user authentication.
 
-You can try it, just [sign up][sign-up] and play with it, it's published in Firebase cloud and it's accesible in this [link][job-helper].
+You can try it, just [sign up][sign-up] and play with it, it's published in Firebase cloud.
 
 ## Development server
 
@@ -26,7 +26,7 @@ $ cd job_helper
 $ npm install
 ```
 
-Before running anything, you have to add one project in [Firebase](https://console.firebase.google.com) and edit the configuration in `app.module.ts`.
+Before running anything, you have to add one project in [Firebase][firebase] and edit the configuration in `app.module.ts`.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
@@ -34,15 +34,16 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Screens
 
-· Main view: general view with the jobs list that fulfil the correspondand filter.
+· General view showing job list once selected filter applied.
 [![m](images/m2.jpg)](images/m2_original.png)
 
-· Job description: show the related information about the job.
+· Job description.
 [![m](images/m3.jpg)](images/m3_original.png)
 
-· Job filter: the true core of the app: the filter management.
+· Job filter list, the true core of the app.
 [![m](images/m4.jpg)](images/m4_original.png)
 
 [infojobs-api]:https://developer.infojobs.net/
-[job-helper]:https://job-helper.firebaseapp.com/
+[firebase]:[https://console.firebase.google.com]
 [sign-up]:https://job-helper.firebaseapp.com/login#top
+[job-helper]:https://job-helper.firebaseapp.com/
